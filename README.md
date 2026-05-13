@@ -1,54 +1,81 @@
 <img width="1292" height="767" alt="image" src="https://github.com/user-attachments/assets/45a13076-9dd6-40f6-a0fc-7694aecfc17f" />
-Smart Home Automation System (Arduino)
-Overview
+# 🏠 Smart Home Automation System using Arduino
 
-This project is a simple Home Automation system using Arduino.
-It allows controlling 4 devices using both manual switches and an IR remote control through relay modules.
+> A dual-mode home automation system that controls electrical devices using **IR Remote** and **manual switches** with relay-based switching.
 
-Features
-Control 4 appliances independently
-Dual control: IR Remote + Push Buttons
-Toggle ON/OFF system for each relay
-Serial Monitor status messages
-Easy to expand for more devices
-Components
-Arduino Uno
-4-Channel Relay Module
-IR Receiver Module
-IR Remote Control
-4 Push Buttons
-Jumper wires
-Pin Configuration
-Relays
-Relay 1 → Pin 12
-Relay 2 → Pin 11
-Relay 3 → Pin 10
-Relay 4 → Pin 9
-Switches
-Switch 1 → Pin 8
-Switch 2 → Pin 7
-Switch 3 → Pin 6
-Switch 4 → Pin 5
-IR Receiver
-Signal Pin → Pin 3
-How It Works
-Manual Control
+---
 
-Pressing a push button toggles the corresponding relay ON/OFF.
+## 🚀 Overview
+This project is a simple yet powerful **Home Automation System** built using Arduino.  
+It allows controlling 4 independent loads (lights, fans, etc.) using:
 
-IR Control
+- 📡 IR Remote Control  
+- 🔘 Manual Push Buttons  
 
-The IR receiver reads signals from the remote and toggles the assigned relay based on the received HEX code.
+The system uses a relay module to safely control high-voltage devices.
 
-Libraries Used
-IRremote
-SPI
-Wire
-Applications
-Smart lighting system
-Fan control
-Home appliance automation
-IoT learning project
-Author
+---
 
-Arduino-based Home Automation Project for learning embedded systems and IoT basics.
+## ✨ Features
+- 🔌 Control 4 different appliances independently  
+- 📡 IR remote-based wireless control  
+- 🔘 Manual switch control (hardware backup)  
+- 🔄 Toggle ON/OFF functionality for each device  
+- 📊 Real-time feedback via Serial Monitor  
+- ⚡ Expandable design (can add more devices easily)
+
+---
+
+## 🧰 Components Used
+- Arduino Uno  
+- 4-Channel Relay Module  
+- IR Receiver Module  
+- IR Remote Control  
+- 4 Push Buttons  
+- Jumper Wires  
+- (Optional loads: LEDs / lamps / fans)
+
+---
+
+## 🔌 Circuit Connections
+
+### ⚡ Relay Module
+| Relay | Arduino Pin |
+|------|------------|
+| Relay 1 | D12 |
+| Relay 2 | D11 |
+| Relay 3 | D10 |
+| Relay 4 | D9 |
+
+### 🔘 Manual Switches
+| Switch | Arduino Pin |
+|--------|------------|
+| Switch 1 | D8 |
+| Switch 2 | D7 |
+| Switch 3 | D6 |
+| Switch 4 | D5 |
+
+### 📡 IR Receiver
+| Signal Pin | Arduino Pin |
+|------------|------------|
+| OUT | D3 |
+
+---
+
+## ⚙️ Working Principle
+
+### 🔘 Manual Mode
+Each push button toggles its corresponding relay:
+- First press → ON  
+- Second press → OFF  
+
+### 📡 IR Remote Mode
+- IR receiver captures signals from the remote  
+- Arduino decodes HEX codes  
+- Each code controls a specific relay  
+
+Example:
+```cpp
+case 0xEF10BF00:
+    relayOnOff(1);
+    break;
